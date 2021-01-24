@@ -55,11 +55,6 @@ export default function SignIn({ setName }) {
         setDisabled(disabled);
     }, [string])
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        setString('');
-    }
-
 
 
     return (
@@ -71,7 +66,6 @@ export default function SignIn({ setName }) {
         </Typography>
                 <form
                     className={classes.form} noValidate
-                    onSubmit={handleSubmit}
                 >
                     <TextField
                         variant="outlined"
@@ -86,12 +80,15 @@ export default function SignIn({ setName }) {
                         onChange={e => setString(e.target.value)}
                     />
                     <Button
-                        type="submit"
+                        type="button"
                         fullWidth
                         variant="contained"
                         color="primary"
                         className={classes.submit}
                         disabled={disabled}
+                        onClick={() => {
+                            setName(string);
+                        }}
                     >
                         はじめる
           </Button>
